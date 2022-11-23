@@ -40,20 +40,22 @@ const App = () => {
   let [tiempoRetornoInversión, setTiempoRetornoInversion] = useState(0);
 
   const calcular = () => {
-    setMasaBuchonNecesario100(masaAProducir*((1-(humedadFinalBuchon/100))/(1-(humedadInicialBuchon/100))));
-    setMasaBuchonNecesario80(masaBuchonNecesario100*0.8);
-    setMasaMateriaOrganica(masaBuchonNecesario100-masaBuchonNecesario80);
-    setAguaEvaporada(masaBuchonNecesario80*(humedadInicialBuchon-humedadFinalBuchon)*0.01);
-    setEnergiaCalentar1M3Aire65((1.1944*1006*(temperaturaSecado-20))/1000);
-    setVolumenAireNecesario(caudalAirePorMasa*masaBuchonNecesario80*(tiempoSecado*60));
-    setEnergiaSecado((energiaCalentar1M3Aire65*volumenAireNecesario)/(3600));
-    setCostoSecado(precioEnergia*energiaSecado*0.77);
-    setVolumenCompostaje((masaAProducir*1000)/densidadCompost);
-    setAreaNecesaria((volumenCompostaje/1000)/0.5);
-    setCostoPlanta(costoPlantaPorTonelada*masaAProducir);
-    setCostoProducto((costoSecado/masaAProducir)*(2/1000));
-    setGananciaUnidad(precioProducto-costoProducto);
-    setTiempoRetornoInversion(costoPlanta/(gananciaUnidad*1000));
+    for (let i = 0; i < 50; i++) {
+      setMasaBuchonNecesario100(masaAProducir*((1-(humedadFinalBuchon/100))/(1-(humedadInicialBuchon/100))));
+      setMasaBuchonNecesario80(masaBuchonNecesario100*0.8);
+      setMasaMateriaOrganica(masaBuchonNecesario100-masaBuchonNecesario80);
+      setAguaEvaporada(masaBuchonNecesario80*(humedadInicialBuchon-humedadFinalBuchon)*0.01);
+      setEnergiaCalentar1M3Aire65((1.1944*1006*(temperaturaSecado-20))/1000);
+      setVolumenAireNecesario(caudalAirePorMasa*masaBuchonNecesario80*(tiempoSecado*60));
+      setEnergiaSecado((energiaCalentar1M3Aire65*volumenAireNecesario)/(3600));
+      setCostoSecado(precioEnergia*energiaSecado*0.77);
+      setVolumenCompostaje((masaAProducir*1000)/densidadCompost);
+      setAreaNecesaria((volumenCompostaje/1000)/0.5);
+      setCostoPlanta(costoPlantaPorTonelada*masaAProducir);
+      setCostoProducto((costoSecado/masaAProducir)*(2/1000));
+      setGananciaUnidad(precioProducto-costoProducto);
+      setTiempoRetornoInversion(costoPlanta/(gananciaUnidad*1000*masaAProducir)); 
+    }
   }
 
   return (
