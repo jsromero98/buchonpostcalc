@@ -54,13 +54,12 @@ const App = () => {
     setCostoProducto((costoSecado/masaAProducir)*(2/1000));
     setGananciaUnidad(precioProducto-costoProducto);
     setTiempoRetornoInversion(costoPlanta/(gananciaUnidad*1000));
-    console.log('aloha');
   }
 
   return (
     <div className="flex flex-column flex-grow-1 bg-green-900 bg-repeat fullHeight">
       
-      <div className="flex flex-row m">
+      <div className="flex flex-column md:flex-row m">
         <div className="flex flex-column m-3">
           <div className="flex flex-row align-items-center p-3">
             <div className="flex flex-column align-self-center">
